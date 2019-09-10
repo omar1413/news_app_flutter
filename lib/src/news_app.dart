@@ -8,11 +8,9 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark));
     return OnBoardingBlocProvider(
       child: MaterialApp(
-        theme: ThemeData.light(),
+        theme: ThemeData.dark(),
         home: OnBoarding(),
       ),
     );
