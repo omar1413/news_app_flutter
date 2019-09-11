@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:news_app/src/blocs/on_boarding_bloc_provider.dart';
-import 'package:news_app/src/screens/on_boarding.dart';
+import 'package:news_app/src/utils/apptheme.dart';
 
 class NewsApp extends StatelessWidget {
   final style = TextStyle(color: Colors.red);
+
+  final Widget _screen;
+
+  NewsApp(this._screen);
 
   @override
   Widget build(BuildContext context) {
     return OnBoardingBlocProvider(
       child: MaterialApp(
-        theme: ThemeData.dark(),
-        home: OnBoarding(),
+        theme: AppTheme.appTheme,
+        home: _screen,
       ),
     );
   }

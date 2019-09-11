@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:news_app/src/blocs/on_boarding_bloc.dart';
 import 'package:news_app/src/blocs/on_boarding_bloc_provider.dart';
+import 'package:news_app/src/data/SharedPref.dart';
 import 'package:news_app/src/models/on_boarding_model.dart';
+import 'package:news_app/src/screens/home.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -40,7 +43,17 @@ class _OnBoardingState extends State<OnBoarding> {
             child: Container(
               child: Text('Get Started'),
             ),
-            onPressed: () {},
+            onPressed: () async {
+              (await SharedPref.getInstance()).setSeen();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Home();
+                  },
+                ),
+              );
+            },
           ),
         ),
       ),
@@ -58,8 +71,6 @@ class _OnBoardingState extends State<OnBoarding> {
               return pageItem(snapshot.data[index]);
             },
             onPageChanged: (index) {
-              print(index);
-              getIndicatorPosition();
               bloc.changeIndicator(index);
             },
           );
@@ -142,7 +153,6 @@ class _OnBoardingState extends State<OnBoarding> {
         if (!snapshot.hasData) {
           return Text('hello');
         }
-        print(snapshot.data.values.first);
         final widgets = <Widget>[];
 
         for (int i = 0; i < snapshot.data.keys.first; i++) {
@@ -165,12 +175,6 @@ class _OnBoardingState extends State<OnBoarding> {
         );
       },
     );
-  }
-
-  void getIndicatorPosition() {
-    RenderBox indicatorRenderBox =
-        _indicatorKey.currentContext.findRenderObject();
-    print(indicatorRenderBox.localToGlobal(Offset.zero));
   }
 }
 
