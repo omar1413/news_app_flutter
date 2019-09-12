@@ -101,16 +101,20 @@ class _NewsCard extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Container(
-              height: 120,
-              color: Colors.black87,
+            child: Card(
+              elevation: 5,
+              child: Container(
+                height: 100,
+                width: 100,
+                color: Colors.black54,
+              ),
             ),
           ),
           Expanded(
             flex: 3,
             child: Container(
               padding: EdgeInsets.all(16.0),
-              height: 120,
+              height: 110,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +137,7 @@ class _NewsCard extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Icon(
-                            Icons.watch_later,
+                            Icons.timer,
                             color: Colors.black54,
                           ),
                           Text(
