@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../header_text.dart';
+import '../news_card.dart';
+import '../time_view.dart';
+
 class WhatsNew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,6 +14,7 @@ class WhatsNew extends StatelessWidget {
           children: <Widget>[
             buildHeader(context),
             buildTopStories(),
+            buildRecentUpdates(),
           ],
         ),
       ),
@@ -57,102 +62,107 @@ class WhatsNew extends StatelessWidget {
     );
   }
 
+  Widget buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0, left: 12.0),
+      child: Text(
+        title,
+        style: TextStyle(
+          color: Colors.black54,
+          fontSize: 15.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget buildSectionBody({List<Widget> widgets = const []}) {
+    return Padding(
+      padding: EdgeInsets.all(14.0),
+      child: Column(
+        children: widgets,
+      ),
+    );
+  }
+
   Widget buildTopStories() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 12.0, left: 12.0),
-          child: Text(
-            'top stories',
-            style: TextStyle(color: Colors.grey, fontSize: 15.0),
-          ),
+        buildSectionTitle('Top Stories'),
+        buildSectionBody(
+          widgets: <Widget>[
+            NewsCard(),
+            Divider(
+              color: Colors.grey,
+              height: 1,
+            ),
+            NewsCard(),
+            Divider(
+              color: Colors.grey,
+              height: 1,
+            ),
+            NewsCard(),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Column(
-            children: <Widget>[
-              _NewsCard(),
-              Divider(
-                color: Colors.grey,
-                height: 1,
-              ),
-              _NewsCard(),
-              Divider(
-                color: Colors.grey,
-                height: 1,
-              ),
-              _NewsCard(),
-            ],
-          ),
-        ),
+      ],
+    );
+  }
+
+  Widget buildRecentUpdates() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        buildSectionTitle('Recent Updates'),
+        buildSectionBody(widgets: [
+          UpdateCard(),
+          Divider(height: 8.0),
+          UpdateCard(),
+          Divider(height: 8.0),
+          UpdateCard(),
+          Divider(height: 8.0),
+        ]),
       ],
     );
   }
 }
 
-class _NewsCard extends StatelessWidget {
+class UpdateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.all(8.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Card(
-              elevation: 5,
-              child: Container(
-                height: 100,
-                width: 100,
-                color: Colors.black54,
+    return Card(
+      margin: EdgeInsets.all(0),
+      elevation: 5,
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              color: Colors.black54.withOpacity(1),
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.25,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 16.0, left: 16.0),
+              padding: EdgeInsets.only(
+                  left: 32.0, right: 32.0, top: 2.0, bottom: 2.0),
+              child: Text('Sport'),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.teal.withOpacity(1),
               ),
             ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              padding: EdgeInsets.all(16.0),
-              height: 110,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'the world global warming annual summit',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        'Michal Adams',
-                        style: TextStyle(color: Colors.black87, fontSize: 13.0),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.timer,
-                            color: Colors.black54,
-                          ),
-                          Text(
-                            '15 min',
-                            style: TextStyle(color: Colors.black87),
-                          )
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
+            Padding(
+              padding: EdgeInsets.only(top: 8.0, left: 16.0),
+              child: HeaderText('Vette is Ferrari Number One - Hamilton'),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.only(top: 8.0, left: 16.0, bottom: 8.0),
+              child: TimeView('15 Min'),
+            ),
+          ],
+        ),
       ),
     );
   }
