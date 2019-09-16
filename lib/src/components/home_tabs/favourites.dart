@@ -6,9 +6,17 @@ class Favourites extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        return NewsView();
+        return Column(
+          children: <Widget>[
+            NewsView(),
+            SizedBox(
+              width: double.infinity,
+              height: 1.0,
+            )
+          ],
+        );
       },
-      itemCount: 1,
+      itemCount: 20,
     );
   }
 }
