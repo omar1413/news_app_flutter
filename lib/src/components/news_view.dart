@@ -8,7 +8,7 @@ class NewsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white.withOpacity(1),
-      padding: EdgeInsets.all(24.0),
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -33,20 +33,20 @@ class _NewsBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(right: 16.0),
-            height: 125,
-            width: 150,
+            margin: EdgeInsets.only(right: 8.0),
+            height: 124,
+            width: 124,
             color: Colors.black.withOpacity(0.85),
           ),
           Expanded(
             child: Column(
               children: <Widget>[
                 HeaderText('Tech Tent : Old Phones and save social'),
-                SizedBox(height: 16.0),
+                SizedBox(height: 10.0),
                 MinorText(
                   'we also talk about the futur of work as the robots advance, and we ask whether aretro phone ',
                   fontSize: 15.0,
-                  height: 1.2,
+                  height: 1.1,
                 ),
               ],
             ),
@@ -70,8 +70,8 @@ class _AuthorRow extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(right: 8.0),
-            width: 40,
-            height: 40,
+            width: 50,
+            height: 50,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.redAccent,
@@ -92,8 +92,8 @@ class _AuthorRow extends StatelessWidget {
               child: IconButton(
                 onPressed: () {},
                 icon: Icon(
-                  Icons.favorite_border,
-                  size: 40.0,
+                  Icons.bookmark_border,
+                  size: 25.0,
                   color: Colors.grey,
                 ),
               ),
