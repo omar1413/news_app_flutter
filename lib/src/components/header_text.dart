@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class HeaderText extends StatelessWidget {
   final String text;
+  final TextAlign textAlign;
 
-  HeaderText(this.text);
+  HeaderText(this.text, {this.textAlign = TextAlign.left});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class HeaderText extends StatelessWidget {
         fontSize: 18.0,
         fontWeight: FontWeight.w700,
       ),
+      textAlign: textAlign,
     );
   }
 }
