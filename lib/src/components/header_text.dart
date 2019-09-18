@@ -19,3 +19,21 @@ class HeaderText extends StatelessWidget {
     );
   }
 }
+
+class NormalText extends StatelessWidget {
+  final String text;
+  final double fontSize;
+  final Color color;
+  NormalText(this.text, {this.fontSize = 18.0, this.color = Colors.black87});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: color,
+        fontSize: fontSize,
+      ),
+    );
+  }
+}
