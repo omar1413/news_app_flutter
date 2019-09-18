@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:news_app/src/components/drawer.dart';
 import 'package:news_app/src/components/home_tabs/favourites.dart';
 import 'package:news_app/src/components/home_tabs/popular.dart';
-import 'package:news_app/src/components/home_tabs/whats_new.dart';
 
-class Home extends StatefulWidget {
+class HeadlineNews extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HeadlineNewsState createState() => _HeadlineNewsState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+class _HeadlineNewsState extends State<HeadlineNews>
+    with TickerProviderStateMixin {
   TabController _tabController;
 
   @override
@@ -22,7 +22,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Explore'),
+        title: Text('HeadLine News'),
         centerTitle: false,
         actions: <Widget>[
           IconButton(
@@ -37,7 +37,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         bottom: TabBar(
           indicatorColor: Colors.white,
           tabs: <Widget>[
-            Tab(text: "WHAT'S NEW"),
+            Tab(text: "News"),
             Tab(text: 'POPULAR'),
             Tab(text: 'FAVOURITES')
           ],
@@ -47,7 +47,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       drawer: MyDrawer(),
       body: TabBarView(
         children: <Widget>[
-          WhatsNew(),
+          Favourites(),
           Popular(),
           Favourites(),
         ],

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/src/screens/headline_news.dart';
+import 'package:news_app/src/screens/home.dart';
+import 'package:news_app/src/screens/twitter_feed.dart';
 
 class MyDrawer extends StatelessWidget {
-  List<String> navMenu = [
-    'Explorer',
-    'Headline News',
-    'Read Later',
-    'Vieos',
-    'Photos',
-    'Settings',
-    'Logout',
+  final List<_NavModel> navMenu = [
+    _NavModel('Explorer', () => Home()),
+    _NavModel('Headline News', () => HeadlineNews()),
+    _NavModel('Twitter Feed', () => TwitterFeed()),
   ];
 
   @override
@@ -23,9 +22,20 @@ class MyDrawer extends StatelessWidget {
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return ListTile(
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return navMenu[index].screen();
+                        },
+                      ),
+                    );
+                  },
                   title: Center(
                     child: Text(
-                      navMenu[index],
+                      navMenu[index].title,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 18.0,
@@ -42,4 +52,11 @@ class MyDrawer extends StatelessWidget {
       ),
     );
   }
+}
+
+class _NavModel {
+  final String title;
+  final Function screen;
+
+  _NavModel(this.title, this.screen);
 }
