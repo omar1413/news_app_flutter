@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/src/screens/headline_news.dart';
 import 'package:news_app/src/screens/home.dart';
+import 'package:news_app/src/screens/instagram_feed.dart';
 import 'package:news_app/src/screens/twitter_feed.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -8,6 +9,7 @@ class MyDrawer extends StatelessWidget {
     _NavModel('Explorer', () => Home()),
     _NavModel('Headline News', () => HeadlineNews()),
     _NavModel('Twitter Feed', () => TwitterFeed()),
+    _NavModel('Instagram Feed', () => InstagramFeed()),
   ];
 
   @override

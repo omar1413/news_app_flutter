@@ -72,6 +72,7 @@ class _FeedCard extends StatelessWidget {
             Row(
               children: <Widget>[
                 HeaderText('Christina Meyers'),
+                SizedBox(width: 5.0),
                 MinorText('@ch_meyers'),
               ],
             ),
@@ -88,22 +89,37 @@ class _FeedCard extends StatelessWidget {
   }
 
   Widget buildCardFooter() {
+    double iconSize = 30.0;
+    double fontSize = 15.0;
+    double buttonFontSize = 15.0;
+
+    final btnColor = Colors.white.withAlpha(0);
+    final btnHighlightColor = Colors.redAccent;
+    final btnSplashColor = Colors.orangeAccent;
+
     const color = Colors.orangeAccent;
     return Row(
       children: <Widget>[
         Expanded(
           flex: 1,
-          child: Icon(
-            Icons.message,
-            color: color.withOpacity(1),
-            size: 35.0,
+          child: IconButton(
+            onPressed: (){},
+            color: btnColor,
+            highlightColor: btnHighlightColor,
+            splashColor: btnSplashColor,
+            padding: EdgeInsets.all(0),
+            icon: Icon(
+              Icons.repeat,
+              color: color.withOpacity(1),
+              size: iconSize,
+            ),
           ),
         ),
         Expanded(
             flex: 1,
             child: MinorText(
               '24',
-              fontSize: 20.0,
+              fontSize: fontSize,
               color: Colors.grey,
             )),
         Expanded(flex: 4, child: SizedBox(width: 1)),
@@ -113,12 +129,13 @@ class _FeedCard extends StatelessWidget {
             elevation: 0,
             padding: EdgeInsets.all(0),
             onPressed: () {},
-            color: Colors.white.withAlpha(0),
-            highlightColor: Colors.redAccent,
-            splashColor: Colors.orangeAccent,
+            color: btnColor,
+            highlightColor: btnHighlightColor,
+            splashColor: btnSplashColor,
             child: NormalText(
               'SHARE',
               color: color,
+              fontSize: buttonFontSize,
             ),
           ),
         ),
@@ -128,12 +145,13 @@ class _FeedCard extends StatelessWidget {
             elevation: 0,
             padding: EdgeInsets.all(0),
             onPressed: () {},
-            color: Colors.white.withAlpha(0),
-            highlightColor: Colors.redAccent,
-            splashColor: Colors.orangeAccent,
+            color: btnColor,
+            highlightColor: btnHighlightColor,
+            splashColor: btnSplashColor,
             child: NormalText(
               'OPEN',
               color: color,
+              fontSize: buttonFontSize,
             ),
           ),
         )
