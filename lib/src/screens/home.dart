@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/src/components/drawer.dart';
+import 'package:news_app/src/components/header_text.dart';
 import 'package:news_app/src/components/home_tabs/favourites.dart';
 import 'package:news_app/src/components/home_tabs/popular.dart';
 import 'package:news_app/src/components/home_tabs/whats_new.dart';
@@ -29,10 +30,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             icon: Icon(Icons.search),
             onPressed: () {},
           ),
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
+          _buildPopupMenu(),
         ],
         bottom: TabBar(
           indicatorColor: Colors.white,
@@ -55,4 +53,24 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
     );
   }
+
+  Widget _buildPopupMenu() {
+    return PopupMenuButton(
+      color: Colors.white,
+      icon: Icon(Icons.more_vert),
+      itemBuilder: (context){
+      return [PopupMenuItem(value: _PopupMenu.CONTACT,
+      child: NormalText('Contact'),),
+        PopupMenuItem(value: _PopupMenu.HELP,
+            child: NormalText('Help'),),
+        PopupMenuItem(value: _PopupMenu.SETTINGS,
+            child: NormalText('Settings'),),];
+    },);
+  }
+}
+
+enum _PopupMenu{
+  CONTACT,
+  HELP,
+  SETTINGS,
 }
